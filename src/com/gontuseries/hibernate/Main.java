@@ -15,13 +15,14 @@ public class Main {
 		StudentDetail studentDetail = new StudentDetail();
 		studentDetail.setStudent_mobile_number("99XXX60XXX");
 		
-		studentDetail.setStudent(student);			
+		studentDetail.setStudent(student);	
+		student.setStudentDetail(studentDetail);
 		
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		session.save(studentDetail);		
+		session.save(student);		
 		
 		session.getTransaction().commit();
 		session.close();
