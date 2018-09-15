@@ -18,14 +18,16 @@ public class Main {
 		
 		Student student2 = new Student();
 		student2.setStudent_name("Gontu2");
-		student2.setStudentAddress(studentAddress);			
+		student2.setStudentAddress(studentAddress);		
+		
+		(studentAddress.getStudents()).add(student1);
+		(studentAddress.getStudents()).add(student2);
 		
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		session.save(student1);
-		session.save(student2);	
+		session.save(studentAddress);		
 		
 		session.getTransaction().commit();
 		session.close();
