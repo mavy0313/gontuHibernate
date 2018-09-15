@@ -12,16 +12,13 @@ public class Main {
 		
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+		session.beginTransaction();				
 		
-		student = (Student) session.get(Student.class, 1);
-		System.out.println("Student name:" + student.getStudent_name());
+		student.setStudent_name("Before Save");
 		
-//		student.setStudent_name("Gontu1 modified");
-//		session.update(student);
-		session.delete(student);
+		session.save(student);
 		
-//		session.save(student);		
+		student.setStudent_name("After Save");
 		
 		session.getTransaction().commit();
 		session.close();
