@@ -1,12 +1,13 @@
 package com.gontuseries.hibernate;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,17 +17,17 @@ public class Student {
 	@Id @GeneratedValue
 	private int student_id;
 	
-	private String student_name;
+	private String student_name;	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private StudentAddress studentAddress;	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Set<StudentCertification> studentCerification = new HashSet<>(0);
 
-	public StudentAddress getStudentAddress() {
-		return studentAddress;
+	public Set<StudentCertification> getStudentCerification() {
+		return studentCerification;
 	}
 
-	public void setStudentAddress(StudentAddress studentAddress) {
-		this.studentAddress = studentAddress;
+	public void setStudentCerification(Set<StudentCertification> studentCerification) {
+		this.studentCerification = studentCerification;
 	}
 
 	public int getStudent_id() {
