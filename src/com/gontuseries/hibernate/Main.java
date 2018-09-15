@@ -9,16 +9,18 @@ import org.hibernate.cfg.AnnotationConfiguration;
 public class Main {
 
 	public static void main(String[] args) {
-		Student_Info student = new Student_Info();
-		student.setName("Gontu");
-		student.setRollNo(1);
-		student.setBirthDate(new Date());
+		Student_Info student1 = new Student_Info();
+		student1.setName("Gontu1");	
+		
+		Student_Info student2 = new Student_Info();
+		student2.setName("Gontu2");
 		
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		session.save(student);
+		session.save(student1);
+		session.save(student2);
 		
 		session.getTransaction().commit();
 		session.close();
