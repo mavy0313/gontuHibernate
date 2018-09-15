@@ -6,31 +6,26 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 public class Main {
 
-	public static void main(String[] args) {
-		StudentCertification studentCertification1 = new StudentCertification();
-		studentCertification1.setCertification_name("Core Java");
-		
-		StudentCertification studentCertification2 = new StudentCertification();
-		studentCertification2.setCertification_name("Oracle DB");
-		
-		Student student1 = new Student();
-		student1.setStudent_name("Gontu1");
-		(student1.getStudentCerification()).add(studentCertification1);
-		
-		Student student2 = new Student();
-		student2.setStudent_name("Gontu2");
-		(student2.getStudentCerification()).add(studentCertification2);			
+	public static void main(String[] args) {				
+		Student student = new Student();
+		student.setStudent_name("Gontu1");			
 		
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		session.save(student1);
-		session.save(student2);		
+		student = (Student) session.get(Student.class, 1);
+		System.out.println("Student name:" + student.getStudent_name());
+		
+//		student.setStudent_name("Gontu1 modified");
+//		session.update(student);
+		session.delete(student);
+		
+//		session.save(student);		
 		
 		session.getTransaction().commit();
 		session.close();
-		sessionFactory.close();
+//		sessionFactory.close();
 	}
 
 }

@@ -17,18 +17,7 @@ public class Student {
 	@Id @GeneratedValue
 	private int student_id;
 	
-	private String student_name;	
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<StudentCertification> studentCerification = new HashSet<>(0);
-
-	public Set<StudentCertification> getStudentCerification() {
-		return studentCerification;
-	}
-
-	public void setStudentCerification(Set<StudentCertification> studentCerification) {
-		this.studentCerification = studentCerification;
-	}
+	private String student_name;			
 
 	public int getStudent_id() {
 		return student_id;

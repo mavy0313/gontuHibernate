@@ -24,11 +24,10 @@
         <property name="show_sql">true</property>
 
         <!-- Drop the existing tables and create new one -->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
  
         <!-- Mention here all the model classes along with their package name -->
- 		<mapping class="com.gontuseries.hibernate.Student"/>
- 		<mapping class="com.gontuseries.hibernate.StudentCertification"/>
+ 		<mapping class="com.gontuseries.hibernate.Student"/> 		
  		
  		 
     </session-factory>
