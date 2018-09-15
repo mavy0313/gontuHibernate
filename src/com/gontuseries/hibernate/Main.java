@@ -1,5 +1,7 @@
 package com.gontuseries.hibernate;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -10,6 +12,7 @@ public class Main {
 		Student_Info student = new Student_Info();
 		student.setName("Gontu");
 		student.setRollNo(1);
+		student.setBirthDate(new Date());
 		
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();

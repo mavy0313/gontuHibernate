@@ -1,8 +1,14 @@
 package com.gontuseries.hibernate;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="STUDENT_INFORMATION")
@@ -11,8 +17,19 @@ public class Student_Info {
 	@Id
 	private int rollNo;
 	
+	@Transient
+	@Column(name="FULL_NAME", nullable=false)
 	private String name;
 	
+	@Temporal(TemporalType.DATE)
+	private Date birthDate;	
+	
+	public Date getBirthDate() {
+		return birthDate;
+	}
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
 	public int getRollNo() {
 		return rollNo;
 	}
